@@ -12,7 +12,7 @@ public class RaycastRoomba : MonoBehaviour
     {
         Ray roombaRay = new Ray(transform.position, transform.forward);
 
-        Debug.DrawRay(roombaRay.origin, roombaRay.direction, Color.magenta);
+        Debug.DrawRay(roombaRay.origin, roombaRay.direction * maxDistance, Color.magenta);
 
         if (Physics.Raycast(roombaRay, maxDistance))
         {
