@@ -12,6 +12,7 @@ public class KidController : MonoBehaviour
     public bool canCrouch;
     public Vector3 inputVector, testForward, testRight;
     public Rigidbody myRB;
+    public Spawner mySpawn;
 
     public enum Stance
     {
