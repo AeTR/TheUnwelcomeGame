@@ -605,7 +605,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 475535393}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.34, y: 0.349, z: 10.34}
+  m_LocalPosition: {x: 2.34, y: 0.349, z: 10.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1803956110}
@@ -644,7 +644,10 @@ MonoBehaviour:
   testForward: {x: 0, y: 0, z: 0}
   testRight: {x: 0, y: 0, z: 0}
   myRB: {fileID: 475535398}
-  mySpawn: {fileID: 608965103}
+  mySpawn: {fileID: 0}
+  allCheckpoints:
+  - {fileID: 883585219}
+  - {fileID: 2004825823}
   myStance: 0
 --- !u!54 &475535398
 Rigidbody:
@@ -662,53 +665,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!1 &608965101
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 608965102}
-  - component: {fileID: 608965103}
-  m_Layer: 0
-  m_Name: Spawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &608965102
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608965101}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.7, y: 0.281, z: 9}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &608965103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608965101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd3662cfe82bf4478827cdf925262094, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allCheckpoints:
-  - {fileID: 883585219}
-  - {fileID: 2004825823}
-  toRespawn: {fileID: 883585219}
 --- !u!1 &759939944
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,6 +914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnLoc: {x: 2.209166, y: 0.278, z: 10.73}
+  checkpointName: First
   kid: {fileID: 475535393}
 --- !u!65 &883585220
 BoxCollider:
@@ -1993,6 +1950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnLoc: {x: 3.319, y: 0.278, z: 12.17}
+  checkpointName: Second
   kid: {fileID: 475535393}
 --- !u!65 &2004825824
 BoxCollider:

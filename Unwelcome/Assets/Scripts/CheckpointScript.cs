@@ -6,6 +6,7 @@ using UnityEngine;
 public class CheckpointScript : MonoBehaviour
 {
     public Vector3 spawnLoc;
+    public string checkpointName;
 
     //public bool activeCheckpoint;
 
@@ -13,7 +14,7 @@ public class CheckpointScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //spawnLoc = transform.position;
     }
 
     // Update is called once per frame

@@ -13,6 +13,7 @@ public class KidController : MonoBehaviour
     public Vector3 inputVector, testForward, testRight;
     public Rigidbody myRB;
     public Spawner mySpawn;
+    public CheckpointScript[] allCheckpoints;
 
     public enum Stance
     {
@@ -22,9 +23,31 @@ public class KidController : MonoBehaviour
 
     public Stance myStance;
 
-    void Start()
+    void Awake()
     {
-        transform.position = mySpawn.toRespawn.spawnLoc;
+        mySpawn = GameObject.Find("Spawner").GetComponent<Spawner>();
+        if (mySpawn.first)
+        {
+            mySpawn.allCheckpoints = new CheckpointScript[allCheckpoints.Length];
+            for (int i = 0; i < allCheckpoints.Length; i++)
+            {
+                mySpawn.allCheckpoints[i] = allCheckpoints[i];
+            }
+            mySpawn.toRespawn = allCheckpoints[0];
+            mySpawn.first = false;
+            //transform.position = mySpawn.transform.position;
+        }
+
+        Vector3 spawnPosition = mySpawn.transform.position;
+        foreach (CheckpointScript temp in allCheckpoints)
+        {
+            if (temp.checkpointName == mySpawn.spawnName)
+            {
+                spawnPosition = temp.transform.position;
+            }
+        }
+
+        transform.position = spawnPosition;
     }
 
     // Update is called once per frame
