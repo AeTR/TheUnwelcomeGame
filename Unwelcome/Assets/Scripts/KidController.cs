@@ -21,10 +21,10 @@ public class KidController : MonoBehaviour
     }
 
     public Stance myStance;
-    // Start is called before the first frame update
-    void Awake()
+
+    void Start()
     {
-        myStance = Stance.Standing;
+        transform.position = mySpawn.toRespawn.spawnLoc;
     }
 
     // Update is called once per frame
