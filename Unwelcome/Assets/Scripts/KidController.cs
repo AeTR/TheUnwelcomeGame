@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class KidController : MonoBehaviour
 {
@@ -111,5 +112,11 @@ public class KidController : MonoBehaviour
                 myRB.velocity = (50 * Time.fixedDeltaTime * crouchSpeed * inputVector)+ Physics.gravity * 0.69f;
                 break;
         }
+    }
+
+    public void Die() //possibly not necessary now I suppose
+    {
+        Debug.Log("Dying now");
+        SceneManager.LoadScene("TestScene"); //this would be the scary house
     }
 }
