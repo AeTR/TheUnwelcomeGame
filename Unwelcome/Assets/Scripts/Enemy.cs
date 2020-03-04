@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
         
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Kid"))
         {
