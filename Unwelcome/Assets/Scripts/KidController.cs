@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class KidController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class KidController : MonoBehaviour
     public bool canCrouch;
     public Vector3 inputVector, testForward, testRight;
     public Rigidbody myRB;
+    public Spawner mySpawn;
+    public CheckpointScript[] allCheckpoints;
 
     public enum Stance
     {
@@ -20,10 +23,32 @@ public class KidController : MonoBehaviour
     }
 
     public Stance myStance;
-    // Start is called before the first frame update
+
     void Awake()
     {
-        myStance = Stance.Standing;
+        mySpawn = GameObject.Find("Spawner").GetComponent<Spawner>();
+        if (mySpawn.first)
+        {
+            mySpawn.allCheckpoints = new CheckpointScript[allCheckpoints.Length];
+            for (int i = 0; i < allCheckpoints.Length; i++)
+            {
+                mySpawn.allCheckpoints[i] = allCheckpoints[i];
+            }
+            mySpawn.toRespawn = allCheckpoints[0];
+            mySpawn.first = false;
+            //transform.position = mySpawn.transform.position;
+        }
+
+        Vector3 spawnPosition = mySpawn.transform.position;
+        foreach (CheckpointScript temp in allCheckpoints)
+        {
+            if (temp.checkpointName == mySpawn.spawnName)
+            {
+                spawnPosition = temp.transform.position;
+            }
+        }
+
+        transform.position = spawnPosition;
     }
 
     // Update is called once per frame
@@ -87,5 +112,11 @@ public class KidController : MonoBehaviour
                 myRB.velocity = (50 * Time.fixedDeltaTime * crouchSpeed * inputVector)+ Physics.gravity * 0.69f;
                 break;
         }
+    }
+
+    public void Die() //possibly not necessary now I suppose
+    {
+        Debug.Log("Dying now");
+        SceneManager.LoadScene("TestScene"); //this would be the scary house
     }
 }

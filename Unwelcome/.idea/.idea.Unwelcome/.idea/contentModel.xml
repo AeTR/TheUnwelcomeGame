@@ -8,6 +8,7 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="CheckpointScript.cs" t="Include" />
+          <e p="Enemy.cs" t="Include" />
           <e p="FirstPersonPhysicsController.cs" t="Include" />
           <e p="KidController.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
