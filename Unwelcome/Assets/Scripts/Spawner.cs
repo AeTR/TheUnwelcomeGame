@@ -18,7 +18,7 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
-        SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene("NormalHouse");
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class Spawner : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("TestScene");
+            SceneManager.LoadScene("NormalHouse");
         }
     }
 

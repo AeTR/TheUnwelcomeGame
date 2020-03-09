@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
             Debug.Log("Get it");
             GameObject temp = other.gameObject;
             KidController temp2 = temp.GetComponent<KidController>();
-            SceneManager.LoadScene("TestScene"); //this would be the scary scene
+            SceneManager.LoadScene("NormalHouse"); //this would be the scary scene
             //Debug.Log("We would die now possibly");
             //temp2.Die();
         }

@@ -117,6 +117,6 @@ public class KidController : MonoBehaviour
     public void Die() //possibly not necessary now I suppose
     {
         Debug.Log("Dying now");
-        SceneManager.LoadScene("TestScene"); //this would be the scary house
+        SceneManager.LoadScene("NormalHouse"); //this would be the scary house
     }
 }
