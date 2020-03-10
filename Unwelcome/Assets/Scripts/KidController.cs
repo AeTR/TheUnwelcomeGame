@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class KidController : MonoBehaviour
 {
@@ -15,6 +17,7 @@ public class KidController : MonoBehaviour
     public Rigidbody myRB;
     public Spawner mySpawn;
     public CheckpointScript[] allCheckpoints;
+    public float rayDistance;
 
     public enum Stance
     {
@@ -26,6 +29,7 @@ public class KidController : MonoBehaviour
 
     void Awake()
     {
+        rayDistance = 1f;
         mySpawn = GameObject.Find("Spawner").GetComponent<Spawner>();
         if (mySpawn.first)
         {
@@ -54,6 +58,31 @@ public class KidController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Ray myRay = new Ray(transform.position, transform.forward);
+        Debug.DrawRay(myRay.origin, myRay.direction * rayDistance, Color.magenta);
+        RaycastHit hitObject;
+        if (Physics.Raycast(myRay, out hitObject, rayDistance))
+        {
+            
+            if (Input.GetMouseButtonDown(0) && hitObject.collider.gameObject.CompareTag("Door"))
+            {
+                hitObject.collider.gameObject.GetComponent<DoorScript>().InteractWithDoor();
+            }
+            
+            /*
+            Debug.Log("Hitting");
+            if (hitObject.collider.gameObject.CompareTag("Door"))
+            {
+                
+                Debug.Log("Hitting Door");
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Debug.Log("Opening Door");
+                    hitObject.collider.gameObject.GetComponent<DoorScript>().OpenDoor();
+                }
+            }
+            */
+        }
         mouseX = Input.GetAxis("Mouse X");
         mouseY = Input.GetAxis("Mouse Y");
         transform.Rotate(0, mouseX, 0);
