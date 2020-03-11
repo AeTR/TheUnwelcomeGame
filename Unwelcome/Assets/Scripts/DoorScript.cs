@@ -2,11 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SceneManagement;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class DoorScript : MonoBehaviour
 {
     public HingeJoint myHinge;
+
+    public Animator myAnimator;
 
     public BoxCollider myCol, openCol, closedCol;
 
@@ -20,7 +23,7 @@ public class DoorScript : MonoBehaviour
 
     public DoorState myState;
 
-    public bool locked;
+    public bool locked, open;
 
     public Rigidbody myRb;
 
@@ -28,13 +31,16 @@ public class DoorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        open = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            InteractWithDoor();
+        }
     }
 
     void FixedUpdate()
@@ -61,26 +67,33 @@ public class DoorScript : MonoBehaviour
 
     public void InteractWithDoor()
     {
+        /*
         if (myState == DoorState.Closed)
         {
             Debug.Log("Door is closed");
             myRb.isKinematic = false;
             Debug.Log("Opening Door");
             myState = DoorState.Opening;
-            myRb.AddTorque(0, openForce, 0);
+            //myRb.AddTorque(0, openForce, 0);
+            myRb.gameObject.transform.Rotate(transform.position, 90);
         }
         else if (myState == DoorState.Open)
         {
             myRb.isKinematic = false;
             myState = DoorState.Closing;
-            myRb.AddTorque(0, -openForce, 0);
+            //myRb.AddTorque(0, -openForce, 0);
+            myRb.gameObject.transform.Rotate(transform.position, -90);
         }
-    }
+        */
+        if (open)
+        {
+            myAnimator.Play("Door Closing");
+        }
 
-    public void OpenDoor()
-    {
-        Debug.Log("Continuing to open door");
-        myRb.AddTorque(0, openForce, 0);
+        else
+        {
+            myAnimator.Play("Door Opening");
+        }
     }
 
     /*

@@ -63,9 +63,9 @@ public class KidController : MonoBehaviour
         RaycastHit hitObject;
         if (Physics.Raycast(myRay, out hitObject, rayDistance))
         {
-            
             if (Input.GetMouseButtonDown(0) && hitObject.collider.gameObject.CompareTag("Door"))
             {
+                Debug.Log("Trying to Interact");
                 hitObject.collider.gameObject.GetComponent<DoorScript>().InteractWithDoor();
             }
             
