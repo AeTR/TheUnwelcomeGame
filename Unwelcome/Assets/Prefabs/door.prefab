@@ -94,6 +94,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85206b3b2ffd54cf29c1982b80b9b9ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hover: Click to open
+  freshText: 
+  usedText: 
+  fresh: 0
+  cooldown: 0
+  currentCount: 0
   myHinge: {fileID: 6145130984284610116}
   myAnimator: {fileID: 1981239094304307309}
   myCol: {fileID: 194665768197497154}
@@ -101,6 +107,7 @@ MonoBehaviour:
   closedCol: {fileID: 0}
   myState: 2
   locked: 0
+  open: 0
   myRb: {fileID: 5149533201925726318}
   openForce: 5
 --- !u!65 &194665768197497154
@@ -368,6 +375,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85206b3b2ffd54cf29c1982b80b9b9ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hover: 
+  freshText: 
+  usedText: 
+  fresh: 0
+  cooldown: 0
+  currentCount: 0
   myHinge: {fileID: 6145130984284610116}
   myAnimator: {fileID: 1981239094304307309}
   myCol: {fileID: 7785999174135878567}
@@ -375,6 +388,7 @@ MonoBehaviour:
   closedCol: {fileID: 0}
   myState: 2
   locked: 0
+  open: 0
   myRb: {fileID: 5149533201925726318}
   openForce: 5
 --- !u!65 &7785999174135878567
@@ -451,7 +465,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -3.0855603, y: 0.0000006556511, z: 0.43302667}
+  m_ConnectedAnchor: {x: -3.0641274, y: 0.00000062584877, z: 0.43839073}
   m_UseSpring: 0
   m_Spring:
     spring: 0

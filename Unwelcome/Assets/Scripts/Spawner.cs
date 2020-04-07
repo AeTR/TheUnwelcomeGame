@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour
 {
     public CheckpointScript[] allCheckpoints;
     public CheckpointScript toRespawn;
-    public string spawnName;
+    public string spawnName, sceneName;
     public Vector3 spawnLoc;
     public bool first;
     void Awake()
@@ -18,7 +18,7 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
-        SceneManager.LoadScene("NormalHouse");
+        SceneManager.LoadScene(sceneName);
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class Spawner : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("NormalHouse");
+            SceneManager.LoadScene(sceneName);
         }
     }
 

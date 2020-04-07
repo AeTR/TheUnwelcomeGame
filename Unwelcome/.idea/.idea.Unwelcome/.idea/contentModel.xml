@@ -15,6 +15,7 @@
           <e p="FirstPersonPhysicsController.cs" t="Include" />
           <e p="Interactable.cs" t="Include" />
           <e p="KidController.cs" t="Include" />
+          <e p="MiscInteractable.cs" t="Include" />
           <e p="PlayerController.cs" t="Include" />
           <e p="RaycastGrounded.cs" t="Include" />
           <e p="RaycastMouse.cs" t="Include" />

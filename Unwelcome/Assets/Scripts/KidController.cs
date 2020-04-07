@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class KidController : MonoBehaviour
@@ -12,12 +13,14 @@ public class KidController : MonoBehaviour
     public CapsuleCollider crouchHit, standHit;
     public Camera standCam, crouchCam;
     public float mouseX, mouseY, standSpeed, crouchSpeed, forwardBackward, leftRight;
-    public bool canCrouch;
+    public bool canCrouch, showingText;
     public Vector3 inputVector, testForward, testRight;
     public Rigidbody myRB;
     public Spawner mySpawn;
     public CheckpointScript[] allCheckpoints;
     public float rayDistance;
+    public Text hoverText, monologue;
+    public int textCountdown;
 
     public enum Stance
     {
@@ -58,11 +61,42 @@ public class KidController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (showingText)
+        {
+            Debug.Log("showing");
+            textCountdown--;
+            if (textCountdown <= 0)
+            {
+                monologue.text = "";
+                showingText = false;
+            }
+        }
         Ray myRay = new Ray(transform.position, transform.forward);
         Debug.DrawRay(myRay.origin, myRay.direction * rayDistance, Color.magenta);
         RaycastHit hitObject;
         if (Physics.Raycast(myRay, out hitObject, rayDistance))
         {
+            if (hitObject.collider.gameObject.tag.Contains("Interactable"))
+            {
+                hoverText.text = hitObject.collider.gameObject.GetComponent<Interactable>().hover;
+            }
+            if (Input.GetMouseButtonDown(0) && hitObject.collider.gameObject.tag.Contains("Interactable"))
+            {
+                hitObject.collider.gameObject.GetComponent<Interactable>().cooldown = true;
+                if (hitObject.collider.gameObject.GetComponent<Interactable>().fresh)
+                {
+                    monologue.text = hitObject.collider.gameObject.GetComponent<Interactable>().freshText;
+                    showingText = true;
+                    textCountdown = hitObject.collider.gameObject.GetComponent<Interactable>().freshTextCount;
+                    hitObject.collider.gameObject.GetComponent<Interactable>().fresh = false;
+                }
+                else
+                {
+                    monologue.text = hitObject.collider.gameObject.GetComponent<Interactable>().usedText;
+                    showingText = true;
+                    textCountdown = hitObject.collider.gameObject.GetComponent<Interactable>().usedTextCount;
+                }
+            }
             if (Input.GetMouseButtonDown(0) && hitObject.collider.gameObject.CompareTag("Door"))
             {
                 Debug.Log("Trying to Interact");

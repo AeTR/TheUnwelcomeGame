@@ -5,7 +5,7 @@ using UnityEditor.SceneManagement;
 using UnityEditorInternal;
 using UnityEngine;
 
-public class DoorScript : MonoBehaviour
+public class DoorScript : Interactable
 {
     public HingeJoint myHinge;
 
